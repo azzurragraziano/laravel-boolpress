@@ -29,7 +29,7 @@
                     
                     <!-- pagination numbers -->
                     <li v-for="pageNumber in paginationLastPage" :key="pageNumber" class="page-item" :class="{'active': pageNumber == paginationCurrentPage}">
-                        <a class="page-link" href="#">pageNumber</a>
+                        <a @click.prevent="getPosts(pageNumber)" class="page-link" href="#">{{pageNumber}}</a>
                     </li>
 
                     <!-- next btn -->

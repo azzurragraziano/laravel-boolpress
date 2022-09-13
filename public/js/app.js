@@ -2033,8 +2033,14 @@ var render = function render() {
       staticClass: "page-link",
       attrs: {
         href: "#"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.getPosts(pageNumber);
+        }
       }
-    }, [_vm._v("pageNumber")])]);
+    }, [_vm._v(_vm._s(pageNumber))])]);
   }), _vm._v(" "), _c("li", {
     staticClass: "page-item",
     "class": {
