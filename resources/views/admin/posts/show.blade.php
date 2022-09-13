@@ -6,6 +6,15 @@
     <div>created on {{$post->created_at->format('l d F Y')}}</div>
     <div>last edit: {{$post->updated_at->format('l d F Y')}}</div>
     <div>category: {{$post->category ? $post->category->name : 'no category'}}</div>
+    <div>
+        tags: 
+
+        @forelse ($post->tags as $tag)
+            {{$tag->name}}{{!$loop->last ? ',' : ''}}
+        @empty
+            no tags
+        @endforelse
+    </div>
 
     <h4>content:</h4>
     <p>{{ $post->content }}</p>
