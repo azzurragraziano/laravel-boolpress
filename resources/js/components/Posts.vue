@@ -12,13 +12,13 @@
                         <div class="card-body">
                             <h5 class="card-title">{{post.title}}</h5>
                             <p class="card-text">{{truncateText(post.content)}}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary">Find out more</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <nav aria-label="Page navigation example">
+            <nav class="mt-3">
                 <ul class="pagination">
                     <!-- previous btn -->
                     <li class="page-item" :class="{'disabled': paginationCurrentPage == 1}">
@@ -28,7 +28,7 @@
                     </li>
                     
                     <!-- pagination numbers -->
-                    <li v-for="pageNumber in paginationLastPage" :key="pageNumber" class="page-item" :class="{'active': pageNumber == currentPaginationPage}">
+                    <li v-for="pageNumber in paginationLastPage" :key="pageNumber" class="page-item" :class="{'active': pageNumber == paginationCurrentPage}">
                         <a class="page-link" href="#">pageNumber</a>
                     </li>
 

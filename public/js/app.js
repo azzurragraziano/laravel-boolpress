@@ -2001,11 +2001,9 @@ var render = function render() {
       attrs: {
         href: "#"
       }
-    }, [_vm._v("Go somewhere")])])])]);
+    }, [_vm._v("Find out more")])])])]);
   }), 0), _vm._v(" "), _c("nav", {
-    attrs: {
-      "aria-label": "Page navigation example"
-    }
+    staticClass: "mt-3"
   }, [_c("ul", {
     staticClass: "pagination"
   }, [_c("li", {
@@ -2029,7 +2027,7 @@ var render = function render() {
       key: pageNumber,
       staticClass: "page-item",
       "class": {
-        active: pageNumber == _vm.currentPaginationPage
+        active: pageNumber == _vm.paginationCurrentPage
       }
     }, [_c("a", {
       staticClass: "page-link",
