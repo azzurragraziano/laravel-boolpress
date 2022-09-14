@@ -1,17 +1,15 @@
 <template>
 
     <main>
-        <Posts/>
+        <router-view></router-view>
     </main>
 
 </template>
 
 <script>
-import Posts from '../components/Posts.vue'
-
 export default {
     components: {
-        Posts
+        
     }
 }
 </script>
