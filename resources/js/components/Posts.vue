@@ -6,18 +6,12 @@
             </h2>
 
             <div class="row row-cols-3">
-                <div v-for="post in posts" :key="post.id" class="col">
-                    <div class="card mt-3">
-                        <!-- <img src="..." class="card-img-top" alt="..."> -->
-                        <div class="card-body">
-                            <h5 class="card-title">{{post.title}}</h5>
-                            <p class="card-text">{{truncateText(post.content)}}</p>
-                            <a href="#" class="btn btn-primary">Find out more</a>
-                        </div>
-                    </div>
+                <div v-for="singlePost in posts" :key="singlePost.id" class="col">
+                    <PostDetails :post="singlePost"/>
                 </div>
             </div>
 
+            <!-- pagination -->
             <nav class="mt-3">
                 <ul class="pagination">
                     <!-- previous btn -->
@@ -45,9 +39,13 @@
 </template>
 
 <script>
+import PostDetails from './PostDetails.vue'
 
 export default {
     name: 'Posts', 
+    components: {
+        PostDetails
+    },
     data() {
         return {
             posts:[],
@@ -56,13 +54,6 @@ export default {
         };
     },
     methods: {
-        truncateText(text) {
-            if(text.length > 100) {
-                return text.slice(0, 100) + '...'
-            }
-
-            return text;
-        },
         getPosts(pageNumber) {
             axios.get('/api/posts', {
                 params: {
