@@ -2,7 +2,7 @@
     <section>
         <div class="container">
             <h2>
-                ecco i post
+                blog
             </h2>
 
             <div class="row row-cols-3">
