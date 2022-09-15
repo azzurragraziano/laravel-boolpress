@@ -2070,7 +2070,13 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/api/posts/".concat(this.$route.params.slug)).then(function (response) {
-      _this.post = response.data.results;
+      if (response.data.success) {
+        _this.post = response.data.results;
+      } else {
+        _this.$router.push({
+          name: 'not-found'
+        });
+      }
     });
   }
 });
@@ -2178,6 +2184,14 @@ var render = function render() {
     staticClass: "card mt-3"
   }, [_c("div", {
     staticClass: "card-body"
+  }, [_vm.post.cover ? _c("img", {
+    staticClass: "w-100",
+    attrs: {
+      src: _vm.post.cover,
+      alt: _vm.post.title
+    }
+  }) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "text-center"
   }, [_c("h5", {
     staticClass: "card-title"
   }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("p", {
@@ -2192,7 +2206,7 @@ var render = function render() {
         }
       }
     }
-  }, [_vm._v("\n            Find out more\n        ")])], 1)]);
+  }, [_vm._v("\n                Find out more\n            ")])], 1)])]);
 };
 
 var staticRenderFns = [];
@@ -2428,7 +2442,13 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_vm.post ? _c("div", [_c("h1", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _vm.post.tags.length > 0 ? _c("div", _vm._l(_vm.post.tags, function (tag) {
+  }, [_vm.post ? _c("div", [_c("h1", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _vm.post.cover ? _c("img", {
+    staticClass: "w-25",
+    attrs: {
+      src: _vm.post.cover,
+      alt: _vm.post.title
+    }
+  }) : _vm._e(), _vm._v(" "), _vm.post.tags.length > 0 ? _c("div", _vm._l(_vm.post.tags, function (tag) {
     return _c("span", {
       key: tag.id,
       staticClass: "badge bg-info text-dark mr-1"

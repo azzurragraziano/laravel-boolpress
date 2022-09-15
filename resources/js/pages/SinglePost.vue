@@ -4,6 +4,9 @@
             <!-- title -->
             <h1>{{post.title}}</h1>
 
+            <!-- cover -->
+            <img class="w-25" v-if="post.cover" :src="post.cover" :alt="post.title">
+
             <!-- tags -->
             <div v-if="post.tags.length > 0">
                 <span v-for="tag in post.tags" :key="tag.id" class="badge bg-info text-dark mr-1">{{tag.name}}</span>
@@ -29,7 +32,11 @@ export default {
     mounted() {
         axios.get(`/api/posts/${this.$route.params.slug}`)
         .then((response)=>{
-            this.post = response.data.results;
+            if(response.data.success){
+                this.post = response.data.results;
+            } else {
+                this.$router.push({name:'not-found'});
+            }
         });
     }
 }

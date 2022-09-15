@@ -16,8 +16,19 @@
             <div class="col">
                 <div class="card mt-2">
                     <div class="card-body">
+
+                        {{-- cover --}}
+                        @if ($post->cover)
+                            <img class="w-100" src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}"> 
+                        @endif
+
+                        {{-- title --}}
                         <h5 class="card-title">{{ $post->title }}</h5>
+
+                        {{-- created --}}
                         <div>created on {{$post->created_at->format('l d F Y')}}</div>
+
+                        {{-- find out more btn --}}
                         <a href="{{route('admin.posts.show', ['post' => $post->id])}}" class="btn btn-primary mt-2">Find out more</a>
                     </div>
                 </div>

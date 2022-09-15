@@ -1,11 +1,26 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+    {{-- title --}}
     <h1>{{ $post->title }}</h1>
+
+    {{-- cover --}}
+    @if ($post->cover)
+        <img class="w-25" src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}"> 
+    @endif
+
+    {{-- slug --}}
     <div>slug: {{$post->slug}}</div>
+
+    {{-- created and updated --}}
     <div>created on {{$post->created_at->format('l d F Y')}}</div>
     <div>last edit: {{$post->updated_at->format('l d F Y')}}</div>
+
+    {{-- category --}}
     <div>category: {{$post->category ? $post->category->name : 'no category'}}</div>
+
+    {{-- tags --}}
     <div>
         tags: 
 
@@ -16,6 +31,7 @@
         @endforelse
     </div>
 
+    {{-- content --}}
     <h4>content:</h4>
     <p>{{ $post->content }}</p>
     
